@@ -45,3 +45,8 @@ create policy "rev_delete_own" on public.reviews for delete using (auth.uid() = 
 create policy "route_select_own" on public.routes for select using (auth.uid() = user_id);
 create policy "route_insert_own" on public.routes for insert with check (auth.uid() = user_id);
 create policy "route_delete_own" on public.routes for delete using (auth.uid() = user_id);
+
+-- new Supabase projects do not auto-grant table access
+grant usage on schema public to anon, authenticated;
+grant select on public.reviews to anon, authenticated;
+grant select, insert, delete on public.reviews, public.favorites, public.routes to authenticated;
