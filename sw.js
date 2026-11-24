@@ -1,7 +1,7 @@
 // Offline support: app shell + data precached; map tiles, terrain and photos cached as you browse.
-const SHELL = 'geoarch-shell-v58';
+const SHELL = 'geoarch-shell-v59';
 const PRE = [
-  './', 'index.html', 'styles.css?v=58', 'app.js?v=58', 'config.js', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png',
+  './', 'index.html', 'styles.css?v=58', 'app.js?v=58', 'config.js?v=59', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png',
   'vendor/gsap.min.js', 'vendor/ScrollTrigger.min.js', 'vendor/supabase.js',
   'vendor/maplibre/maplibre-gl.js', 'vendor/maplibre/maplibre-gl.css', 'vendor/fonts/serif.woff2', 'vendor/fonts/sans.woff2',
   'data/places.json?v=20261121b', 'data/borders.json?v=20261121b', 'data/curated.json?v=20261121b',
