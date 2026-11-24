@@ -1,12 +1,12 @@
 // Place card: real photos (Wikimedia Commons), real history (Wikipedia, in the visitor's language when it exists)
 // rolling like film credits, an optional real 3D scan (Sketchfab), and an exterior fly-around on the live 3D map.
-import { t, LANG } from './i18n.js?v=58';
-import { openWalk } from './walk.js?v=58';
-import { fmtDate, translate, translit } from './names.js?v=58';
-import { createGuide } from './guide.js?v=58';
-import { passport } from './tour.js?v=58';
-import { createMyRoute } from './route_me.js?v=58';
-import { sakartvelo } from './sakartvelo.js?v=58';
+import { t, LANG } from './i18n.js?v=60';
+import { openWalk } from './walk.js?v=60';
+import { fmtDate, translate, translit } from './names.js?v=60';
+import { createGuide } from './guide.js?v=60';
+import { passport } from './tour.js?v=60';
+import { createMyRoute } from './route_me.js?v=60';
+import { sakartvelo } from './sakartvelo.js?v=60';
 let curatedP = null;
 export const autoGuide = () => { try { return localStorage.getItem('geoarch-autoguide') !== '0'; } catch { return true; } };
 export const setAutoGuide = (v) => { try { localStorage.setItem('geoarch-autoguide', v ? '1' : '0'); } catch { /* */ } };

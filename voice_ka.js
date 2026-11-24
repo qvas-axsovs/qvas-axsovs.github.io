@@ -81,7 +81,7 @@ function phonemeIds(V, text) {
 }
 
 const UK_V = 'аеєиіїоуюя';
-import { UK_NAMES } from './uk_names.js?v=58';
+import { UK_NAMES } from './uk_names.js?v=60';
 const UK_STEMS = Object.keys(UK_NAMES).sort((a, b) => b.length - a.length);
 function addStress(text, dict) {
   if (!dict) return text;
@@ -106,8 +106,8 @@ function letterIds(cfg, text) {
   return out;
 }
 
-export { sayKa as speakableKa } from './ka_say.js?v=58';
-import { sayText } from './say.js?v=58';
+export { sayKa as speakableKa } from './ka_say.js?v=60';
+import { sayText } from './say.js?v=60';
 
 // one sentence → { pcm: Float32Array, rate }
 export async function synth(text, lang = 'ka') {

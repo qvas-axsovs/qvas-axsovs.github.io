@@ -1,7 +1,7 @@
 // Audio guide: a small animated guide figure that tells the story aloud (Web Speech API) with live subtitles.
-import { t, LANG } from './i18n.js?v=58';
-import { loadVoice, synth, voiceCached, hasVoice } from './voice_ka.js?v=58';
-import { sayText } from './say.js?v=58';
+import { t, LANG } from './i18n.js?v=60';
+import { loadVoice, synth, voiceCached, hasVoice } from './voice_ka.js?v=60';
+import { sayText } from './say.js?v=60';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const BCP = { ka: 'ka-GE', en: 'en-GB', ru: 'ru-RU', uk: 'uk-UA', tr: 'tr-TR', de: 'de-DE', fr: 'fr-FR' };

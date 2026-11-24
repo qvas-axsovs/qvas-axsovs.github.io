@@ -1,6 +1,6 @@
 // Names, dates and translation helpers for register-based places.
-import { t, LANG } from './i18n.js?v=58';
-import { TYPES, DEDS } from './names_data.js?v=58';
+import { t, LANG } from './i18n.js?v=60';
+import { TYPES, DEDS } from './names_data.js?v=60';
 
 const KA = 'აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰ';
 const LAT = ['a','b','g','d','e','v','z','t','i','k','l','m','n','o','p','zh','r','s','t','u','p','k','gh','q','sh','ch','ts','dz','ts','ch','kh','j','h'];

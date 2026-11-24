@@ -1,10 +1,10 @@
 // Catalogue of every place on the map, grouped like a guidebook: churches, fortresses, monuments, views, nature…
 // Each card gets a real photo (Wikidata → Wikipedia → heritage register → nearby Commons photo) and opens the
 // full place card on the site's map (photos, history, guide, 360° walk, route from where you are).
-import { t, LANG } from './i18n.js?v=58';
-import { DATA_V, CATS } from './map.js?v=58';
-import { localizeNames, fmtDate } from './names.js?v=58';
-import { PHOTOS } from './photos.js?v=58';
+import { t, LANG } from './i18n.js?v=60';
+import { DATA_V, CATS } from './map.js?v=60';
+import { localizeNames, fmtDate } from './names.js?v=60';
+import { PHOTOS } from './photos.js?v=60';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const nm = (n) => (n && (n[LANG] || n.en || n.ka)) || '';

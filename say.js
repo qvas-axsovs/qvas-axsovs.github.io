@@ -1,7 +1,7 @@
 // Turn written text into what the guide should say aloud, per language: abbreviations in full
 // ("г." → "город", "XII в." → "двенадцатого века", "ქ." → "ქალაქი"), centuries in words, units, eras.
-import { sayKa } from './ka_say.js?v=58';
-import { sakartvelo } from './sakartvelo.js?v=58';
+import { sayKa } from './ka_say.js?v=60';
+import { sakartvelo } from './sakartvelo.js?v=60';
 
 const RV = { I: 1, V: 5, X: 10, L: 50, C: 100 };
 const roman = (s) => { let n = 0; for (let i = 0; i < s.length; i++) { const v = RV[s[i]], w = RV[s[i + 1]] || 0; n += v < w ? -v : v; } return n; };

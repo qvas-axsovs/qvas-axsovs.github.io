@@ -1,6 +1,6 @@
 // Side-panel features: ready-made routes, "near me", the century timeline, the traveller's passport, offline save.
-import { t, LANG } from './i18n.js?v=58';
-import { ROUTES } from './routes_data.js?v=58';
+import { t, LANG } from './i18n.js?v=60';
+import { ROUTES } from './routes_data.js?v=60';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const L = (o) => (o && (o[LANG] || o.en)) || '';

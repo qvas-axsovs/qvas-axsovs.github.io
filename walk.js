@@ -1,7 +1,7 @@
 // "Walk" mode: real street-level / visitor 360° imagery around a place.
 // 1) Google Street View at the place (roads, courtyards and visitors' 360° photo-spheres, walkable with arrows)
 // 2) Spherical 360° panoramas from Wikimedia Commons (often interiors), shown with Pannellum.
-import { t, LANG } from './i18n.js?v=58';
+import { t, LANG } from './i18n.js?v=60';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const strip = (s) => String(s ?? '').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();

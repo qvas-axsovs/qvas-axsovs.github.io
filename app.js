@@ -1,7 +1,7 @@
-import { PHOTOS, photoCredit } from './photos.js?v=58';
-import { ERAS, MONUMENTS, MODEL_LABEL } from './data.js?v=58';
-import { t, L, LANG, LANGS, setLang } from './i18n.js?v=58';
-import { initMap } from './map.js?v=58';
+import { PHOTOS, photoCredit } from './photos.js?v=60';
+import { ERAS, MONUMENTS, MODEL_LABEL } from './data.js?v=60';
+import { t, L, LANG, LANGS, setLang } from './i18n.js?v=60';
+import { initMap } from './map.js?v=60';
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -330,7 +330,7 @@ addEventListener('online', net); addEventListener('offline', net); net();
 let catStarted = false;
 const startCatalog = () => {
   if (catStarted) return; catStarted = true;
-  import('./catalog.js?v=58').then(m => m.initCatalog($('#monuments'), {
+  import('./catalog.js?v=60').then(m => m.initCatalog($('#monuments'), {
     openPlace: (i) => {
       const w = $('.map-wrap'); scrollTo({ top: w.getBoundingClientRect().top + scrollY - (innerWidth > 900 ? 76 : 70), behavior: 'smooth' });
       ensureMap().then(api => api && setTimeout(() => api.openIndex(i), 500));

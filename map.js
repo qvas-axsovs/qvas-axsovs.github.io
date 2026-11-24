@@ -1,8 +1,8 @@
-import { t, LANG } from './i18n.js?v=58';
-import { createPlaceView, autoGuide, setAutoGuide } from './placeview.js?v=58';
-import { createGuide } from './guide.js?v=58';
-import { localizeNames } from './names.js?v=58';
-import { setupTour } from './tour.js?v=58';
+import { t, LANG } from './i18n.js?v=60';
+import { createPlaceView, autoGuide, setAutoGuide } from './placeview.js?v=60';
+import { createGuide } from './guide.js?v=60';
+import { localizeNames } from './names.js?v=60';
+import { setupTour } from './tour.js?v=60';
 export const DATA_V = '20261121b';
 
 export const CATS = {

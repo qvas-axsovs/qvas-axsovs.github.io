@@ -1,6 +1,6 @@
 // "How to get there": your position → the place, by car and on foot, with distance and travel time,
 // drawn on the site's own map (OSRM routing from routing.openstreetmap.de).
-import { t } from './i18n.js?v=58';
+import { t } from './i18n.js?v=60';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 export const fmtDur = (m) => {
