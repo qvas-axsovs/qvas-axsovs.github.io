@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ka">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ქვის მეხსიერება — საქართველოს არქიტექტურა და ღირსშესანიშნაობები</title>
+<meta name="description" content="Free interactive guide to Sakartvelo: 3D architecture, a map of 7,000+ churches, fortresses, waterfalls, lakes, caves and other sights — in Georgian, English, Russian, Ukrainian, Turkish, German and French.">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0e1217">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css">
+<link rel="stylesheet" href="styles.css?v=58">
+<script src="config.js"></script>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/supabase.js"></script>
+<script defer src="vendor/maplibre/maplibre-gl.js"></script>
+</head>
+<body>
+<div id="loader" aria-hidden="true">
+  <div class="loader-letter">ქ</div>
+  <div class="loader-bar"><span></span></div>
+  <div class="loader-num">0</div>
+</div>
+
+
+<header class="nav">
+  <a href="#top" class="logo"><span class="logo-mark">ქ</span> <span data-i18n="brand"></span></a>
+  <nav class="nav-links">
+    <a href="#map" data-i18n="nav_map"></a>
+    <a href="#monuments" data-i18n="cat_t"></a>
+    <a href="#eras" data-i18n="nav_eras"></a>
+    <a href="#cabinet" data-i18n="nav_cab"></a>
+  </nav>
+  <div class="nav-right">
+    <select id="langSel" class="lang-sel" aria-label="Language"></select>
+    <button class="btn btn-ghost" id="authBtn" data-i18n="login"></button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="top">
+    <div class="hero-media" id="heroMedia" aria-hidden="true"></div>
+    <a class="hero-cap" id="heroCap" target="_blank" rel="noopener"></a>
+    <p class="kicker reveal" data-i18n="hero_kicker"></p>
+    <h1 class="split" id="heroTitle"></h1>
+    <p class="lead reveal" data-i18n="hero_lead"></p>
+    <div class="hero-cta reveal">
+      <a href="#map" class="btn btn-solid" data-i18n="hero_map"></a>
+      <a href="#chapters" class="btn btn-ghost" data-i18n="hero_start"></a>
+    </div>
+    <div class="scroll-hint"><span></span><b data-i18n="scroll"></b></div>
+  </section>
+
+  <section class="chapter" data-photo="jvari" id="chapters">
+    <div class="ch-photo" aria-hidden="true"></div><a class="ch-cap" target="_blank" rel="noopener"></a><div class="chapter-card"><span class="chapter-no">01</span><h2 class="split" data-i18n="ch1_t"></h2><p class="reveal" data-i18n="ch1_p"></p></div>
+  </section>
+  <section class="chapter right" data-photo="ushguli">
+    <div class="ch-photo" aria-hidden="true"></div><a class="ch-cap" target="_blank" rel="noopener"></a><div class="chapter-card"><span class="chapter-no">02</span><h2 class="split" data-i18n="ch2_t"></h2><p class="reveal" data-i18n="ch2_p"></p></div>
+  </section>
+  <section class="chapter" data-photo="vardzia">
+    <div class="ch-photo" aria-hidden="true"></div><a class="ch-cap" target="_blank" rel="noopener"></a><div class="chapter-card"><span class="chapter-no">03</span><h2 class="split" data-i18n="ch3_t"></h2><p class="reveal" data-i18n="ch3_p"></p></div>
+  </section>
+  <section class="chapter right" data-photo="highways">
+    <div class="ch-photo" aria-hidden="true"></div><a class="ch-cap" target="_blank" rel="noopener"></a><div class="chapter-card"><span class="chapter-no">04</span><h2 class="split" data-i18n="ch4_t"></h2><p class="reveal" data-i18n="ch4_p"></p></div>
+  </section>
+
+  <section class="mapsec" id="map">
+    <div class="section-head">
+      <p class="kicker" data-i18n="map_k"></p>
+      <h2 class="split" data-i18n="map_t"></h2>
+      <p class="lead" data-i18n="map_lead"></p>
+    </div>
+    <div class="map-wrap">
+      <aside class="map-side">
+        <div class="side-tabs" role="tablist">
+          <button data-tab="places" class="on" data-i18n="tab_places"></button>
+          <button data-tab="routes" data-i18n="tab_routes"></button>
+          <button data-tab="pass" data-i18n="tab_pass"></button>
+        </div>
+        <div class="side-pane" data-pane="places">
+          <div class="map-search">
+            <input id="mapSearch" type="search" autocomplete="off" data-i18n-ph="map_search">
+            <div id="mapSuggest" class="suggest"></div>
+          </div>
+          <button id="nearMe" class="near-me" data-i18n="near_me"></button>
+          <div id="mapCities" class="map-cities"></div>
+          <div class="map-radius"><label><span data-i18n="map_radius"></span> <b id="mapRadiusVal"></b></label><input id="mapRadius" type="range" min="5" max="80" step="5" value="25"></div>
+          <div class="map-time"><label><span data-i18n="tl_label"></span> <b id="tlVal"></b></label>
+            <div class="tl-row"><button id="tlPlay" aria-label="play">▶</button><input id="tlRange" type="range" min="0" max="27" value="27"></div></div>
+          <div id="mapCats" class="map-cats"></div>
+          <div id="mapList" class="map-list"><p class="muted" data-i18n="loading"></p></div>
+        </div>
+        <div class="side-pane" data-pane="routes" hidden><div id="routeList" class="route-list"></div></div>
+        <div class="side-pane" data-pane="pass" hidden><div id="passport" class="passport"></div></div>
+      </aside>
+      <div class="map-box"><div id="leaf"></div><div class="map-count" id="mapCount"></div></div>
+    </div>
+  </section>
+
+  <section class="monuments" id="monuments">
+    <div class="section-head cat-head">
+      <p class="kicker" data-i18n="cat_k"></p>
+      <h2 class="split" data-i18n="cat_t"></h2>
+      <p class="lead" data-i18n="cat_lead"></p>
+    </div>
+    <div class="cat-bar">
+      <div class="cat-tabs" id="catTabs" role="tablist"></div>
+      <input class="cat-search" id="catSearch" type="search" data-i18n-ph="cat_search" autocomplete="off">
+    </div>
+    <div class="grid cat-grid" id="catGrid"></div>
+    <div class="cat-more-wrap"><button class="btn btn-ghost" id="catMore" hidden></button></div>
+    <div hidden><div id="filters"></div><div id="grid"></div></div>
+  </section>
+
+  <section class="eras" id="eras">
+    <div class="eras-head"><p class="kicker" data-i18n="eras_k"></p><h2 class="split" data-i18n="eras_t"></h2></div>
+    <div class="eras-track" id="erasTrack"></div>
+  </section>
+
+  <section class="cabinet" id="cabinet">
+    <div class="section-head"><p class="kicker" data-i18n="cab_k"></p><h2 class="split" data-i18n="cab_t"></h2></div>
+    <div id="cabinetBody" class="cabinet-body"></div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-big" data-i18n-html="foot_big"></div>
+    <div class="footer-cols"><p data-i18n="foot_p"></p><p class="muted" data-i18n="foot_note"></p></div>
+  </footer>
+</main>
+
+<div class="modal" id="monModal" role="dialog" aria-modal="true" aria-labelledby="monTitle">
+  <div class="modal-box">
+    <button class="modal-x" data-close data-i18n-aria="close">×</button>
+    <p class="kicker" id="monMeta"></p>
+    <h3 id="monTitle"></h3>
+    <p id="monText"></p>
+    <div class="mon-actions">
+      <button class="btn btn-solid small" id="monFav"></button>
+      <button class="btn btn-ghost small" id="monMap" data-i18n="nav_map"></button>
+    </div>
+    <div class="reviews">
+      <h4><span data-i18n="reviews"></span> <span id="monAvg"></span></h4>
+      <form id="reviewForm" class="review-form">
+        <div class="stars" id="stars"></div>
+        <textarea id="reviewText" maxlength="600" data-i18n-ph="review_ph" required></textarea>
+        <button class="btn btn-solid small" type="submit" data-i18n="publish"></button>
+      </form>
+      <ul id="reviewList" class="review-list"></ul>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div class="modal-box auth-box">
+    <button class="modal-x" data-close data-i18n-aria="close">×</button>
+    <div class="auth-tabs"><button data-tab="login" class="active" data-i18n="login"></button><button data-tab="register" data-i18n="register"></button></div>
+    <h3 id="authTitle"></h3>
+    <form id="authForm">
+      <label class="field reg-only"><span data-i18n="name"></span><input name="name" autocomplete="name" maxlength="40"></label>
+      <label class="field"><span data-i18n="email"></span><input name="email" type="email" autocomplete="email" required></label>
+      <label class="field"><span data-i18n="password"></span><input name="password" type="password" autocomplete="current-password" minlength="6" required></label>
+      <button class="btn btn-solid wide" type="submit" id="authSubmit"></button>
+      <p class="form-msg" id="authMsg"></p>
+    </form>
+    <p class="muted small-text" id="modeNote"></p>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script type="module" src="app.js?v=58"></script>
+</body>
+</html>
